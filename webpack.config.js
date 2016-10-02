@@ -13,7 +13,7 @@ module.exports = {
   entry: path.join(componentPath, 'client.jsx'),
   output: {
       path: jsPath,
-      publicPath: '/',
+      publicPath: '/static/js/',
       filename: "bundle.js"
   },
   module: {
@@ -27,5 +27,13 @@ module.exports = {
             }
           }
       ]
+  },
+  devServer: {
+    proxy: {
+      "*": {
+        target: "http://localhost:8000",
+        secure: false
+      }
+    }
   }
 };
