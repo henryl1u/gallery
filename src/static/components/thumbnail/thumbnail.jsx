@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class Thumbnail extends React.Component {
     render() {
         let title = this.props.title;

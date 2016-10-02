@@ -1,12 +1,18 @@
 var path = require('path');
 var srcPath = path.join(__dirname, 'src');
-var buildPath = path.join(__dirname, 'dist');
+var staticPath = path.join(srcPath, 'static');
+var componentPath = path.join(staticPath, 'components');
+var jsPath = path.join(staticPath, 'js');
 
 module.exports = {
-  context: srcPath,
-  entry: path.join(srcPath, 'jsx', 'client.jsx'),
+  context: componentPath,
+  recursive: true,
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+  entry: path.join(componentPath, 'client.jsx'),
   output: {
-      path: buildPath,
+      path: jsPath,
       publicPath: '/',
       filename: "bundle.js"
   },
@@ -21,8 +27,5 @@ module.exports = {
             }
           }
       ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
   }
 };
